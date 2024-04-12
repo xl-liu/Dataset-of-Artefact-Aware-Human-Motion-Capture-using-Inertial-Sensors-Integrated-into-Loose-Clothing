@@ -1,5 +1,14 @@
 # Dataset of "Towards Artefact Aware Human Motion Capture using Inertial Sensors Integrated into Loose Clothing"
 
+## SMPL conversion and visualization
+`xsens_to_smpl.py` converts the ground truth skeleton poses in the original dataset to SMPL format\
+`data_viewer.py` visualizes the ground truth pose with the IMUs (screenshot in the first fig below)\
+`result_viewer.py` visualizes the pose estimator output with error map mesh coloring (screenshot in the second figure below)
+
+<img src="media/smpl_imu.png" alt="smpl_imu" width="400"/>\
+<img src="media/pe_error.png" alt="smpl_imu" width="400"/>
+
+## the original readme 
 This repository contains the some application for the following dataset:
 Dataset of "Towards Artefact Aware Human Motion Capture using Inertial Sensors Integrated into Loose Clothing"  
 You can get on  
