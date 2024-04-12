@@ -1,5 +1,5 @@
 import PyQt5.QtWidgets as qtw
-from PyQt5 import QtCore, QtGui
+from PyQt5 import QtCore, QtGui, QtWidgets
 
 import pyqtgraph.opengl as gl
 
@@ -80,12 +80,12 @@ class SkeletonViewer():
         # ||______________|   |
         # |___________________|
 
-        layoutV1_L = QtGui.QVBoxLayout()
+        layoutV1_L = QtWidgets.QVBoxLayout()
         layoutV1_L.addWidget(self.buttonUnconnect)
         layoutV1_L.addWidget(self.labelTitle)
         layoutV1_L.addWidget(self.view,100)
 
-        hBox2 = QtGui.QHBoxLayout()
+        hBox2 = QtWidgets.QHBoxLayout()
         hBox2.addWidget(self.buttonBigBackward)
         hBox2.addWidget(self.buttonBackward)
         hBox2.addWidget(self.buttonSmallBackward)

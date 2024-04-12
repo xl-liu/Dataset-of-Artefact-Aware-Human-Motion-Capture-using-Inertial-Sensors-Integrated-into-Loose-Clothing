@@ -10,7 +10,7 @@ class GLViewWidgetWithText(GLViewWidget):
         self.positionAndText = positionAndText
     def paintGL(self, *args, **kwds):
         GLViewWidget.paintGL(self, *args, **kwds)
-        self.qglColor(QtCore.Qt.white)
+        # self.qglColor(QtCore.Qt.white)
         for posText in self.positionAndText :
             x = posText[0][0]
             y = posText[0][1]
