@@ -17,22 +17,22 @@ import numpy as np
 
 
 # %% Settings
-IDX_PERSON = 1 # chose between Person 1 to 12
-DIR_TO_H5 = 'DIR/TO/DATA'# -> Download the data From https://zenodo.org/record/5948725 <-
-SEQUENCE = 'shoulder_flexion' # choose between ['longterm', 'shoulder_abduction', 'shoulder_flexion', 'squat']
+IDX_PERSON = 2 # chose between Person 1 to 12
+DIR_TO_H5 = '..\..\data\clothing'# -> Download the data From https://zenodo.org/record/5948725 <-
+SEQUENCE = 'squat' # choose between ['longterm', 'shoulder_abduction', 'shoulder_flexion', 'squat']
 
 showFullBody = True
 # %% Load Data from files
 # The order of quaternions are q = [q_w, q_x, q_y, q_z]
 # Tight
-H5_Filename= (DIR_TO_H5+ 'Tight_' +SEQUENCE+'.h5')
+H5_Filename= (DIR_TO_H5+ '\Tight_' +SEQUENCE+'.h5')
 h5T = h5py.File(H5_Filename,'r')
 quats_tight_rel = h5T['P'+str(IDX_PERSON)]['quatRel'][...]
 quats_tight_abs = h5T['P'+str(IDX_PERSON)]['quatAbs'][...]
 h5T.close()
 
 # Loose
-H5_Filename= (DIR_TO_H5+ 'Loose_' +SEQUENCE+'.h5')
+H5_Filename= (DIR_TO_H5+ '\Loose_' +SEQUENCE+'.h5')
 h5L = h5py.File(H5_Filename,'r')
 quats_loose_rel = h5L['P'+str(IDX_PERSON)]['quatRel'][...]
 quats_loose_abs = h5L['P'+str(IDX_PERSON)]['quatAbs'][...]

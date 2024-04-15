@@ -20,8 +20,8 @@ import time
 
 
 # %% Settings
-IDX_PERSONS = [1,2] # chose between Person 1 to 12
-DIR_TO_H5 = 'DIR/TO/DATA'# -> Download the data From https://zenodo.org/record/5948725 <-
+IDX_PERSONS = [1] # chose between Person 1 to 12
+DIR_TO_H5 = '..\..\data\clothing'# -> Download the data From https://zenodo.org/record/5948725 <-
 SEQUENCE = 'longterm' # choose between ['longterm', 'shoulder_abduction', 'shoulder_flexion', 'squat']
 
 showFullBody = True
@@ -31,7 +31,7 @@ print( dh.categLongTerm )
 
 activities2TimeRange = dh.getActivationArray(IDX_PERSONS)
 # %% Load Data from files
-TAKE_ACTIVITY = 'S1Shelf2Ground'
+TAKE_ACTIVITY = 'S2L-Hand-Up'
 for personAndTimeRange,idx_person in zip(activities2TimeRange,IDX_PERSONS):
   print('Person ' +str(idx_person))
   for timeRange in personAndTimeRange[TAKE_ACTIVITY]:
@@ -42,13 +42,13 @@ for personAndTimeRange,idx_person in zip(activities2TimeRange,IDX_PERSONS):
     # %%
     # The order of quaternions are q = [q_w, q_x, q_y, q_z]
     # Tight
-    H5_Filename= (DIR_TO_H5+ 'Tight_' +SEQUENCE+'.h5')
+    H5_Filename= (DIR_TO_H5+ '\Tight_' +SEQUENCE+'.h5')
     h5T = h5py.File(H5_Filename,'r')
     quats_tight_rel = h5T['P'+str(idx_person)]['quatRel'][:, beginning:end, :]
     h5T.close()
 
     # Loose
-    H5_Filename= (DIR_TO_H5+ 'Loose_' +SEQUENCE+'.h5')
+    H5_Filename= (DIR_TO_H5+ '\Loose_' +SEQUENCE+'.h5')
     h5L = h5py.File(H5_Filename,'r')
     quats_loose_rel = h5L['P'+str(idx_person)]['quatRel'][:, beginning:end, :]
 

@@ -13,10 +13,11 @@ https://zenodo.org/record/5948725
 import addpaths
 import h5py
 import matplotlib.pyplot as plt
+import os
 
 # %% Settings
 IDX_PERSON = 1 # chose between Person 1 to 12
-DIR_TO_H5 = 'DIR/TO/DATA'# -> Download the data From https://zenodo.org/record/5948725 <-
+DIR_TO_H5 = "..\..\data\clothing"  # -> Download the data From https://zenodo.org/record/5948725 <-
 SEQUENCE = 'shoulder_abduction' # choose between ['longterm', 'shoulder_abduction', 'shoulder_flexion', 'squat']
 
 TAKE_SEGMENT = 'L-Forearm'
@@ -27,7 +28,7 @@ TAKE_SEGMENT = 'L-Forearm'
 getValuesOf = lambda h5, name : h5['P'+str(IDX_PERSON)][name]
 
 # Tight
-H5_Filename= (DIR_TO_H5+ 'Tight_' +SEQUENCE+'.h5')
+H5_Filename = os.path.join(DIR_TO_H5, f'Tight_{SEQUENCE}.h5')
 h5T = h5py.File(H5_Filename,'r')
 #get the order of the quaternions
 order_abs = [n.decode('utf-8')
@@ -39,7 +40,7 @@ mag_tight = getValuesOf(h5T, 'mag')[idx_segment_take,:,:]
 h5T.close()
 
 # Loose
-H5_Filename= (DIR_TO_H5+ 'Loose_' +SEQUENCE+'.h5')
+H5_Filename = os.path.join(DIR_TO_H5, f'Loose_{SEQUENCE}.h5')
 h5L = h5py.File(H5_Filename,'r')
 acc_loose = getValuesOf(h5L, 'acc')[idx_segment_take,:,:]
 gyr_loose = getValuesOf(h5L, 'gyr')[idx_segment_take,:,:]
@@ -66,3 +67,5 @@ plt.plot(mag_loose,':',label='mag_loose')
 plt.legend()
 plt.grid(True)
 plt.title('Magnetometer measurements')
+
+plt.show()
